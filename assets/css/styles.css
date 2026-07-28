@@ -218,3 +218,19 @@ textarea{min-height:120px;resize:vertical}
     max-width: 150px;
   }
 }
+.about-brand-emblem {
+  display: block;
+  width: clamp(300px, 38vw, 470px);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
+@media (max-width: 768px) {
+  .about-brand-emblem {
+    width: min(100%, 380px);
+  }
+}
