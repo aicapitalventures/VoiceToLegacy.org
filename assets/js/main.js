@@ -3,7 +3,7 @@
 
   const PHONE_DISPLAY = '502-270-8828';
   const PHONE_TEL = '+15022708828';
-  const EMAIL = 'elijah@divinityxenterprises.com';
+  const EMAIL = 'accounting@divinityxenterprises.com';
   const GITHUB_PROJECT_PATH = '/VoiceToLegacy.org/';
   const SITE_ROOT_PATH = location.hostname.endsWith('github.io') ? GITHUB_PROJECT_PATH : '/';
   const SITE_ROOT_URL = new URL(SITE_ROOT_PATH, location.origin);
