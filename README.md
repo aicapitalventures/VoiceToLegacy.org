@@ -62,6 +62,7 @@ This repository is public-site code only. It does not provide secure accounts, p
 - Program: Voice to Legacy™
 - Publisher: Divinityx Publishing Company
 
+
 ## GitHub Pages preview compatibility
 
 The pages dynamically select `/VoiceToLegacy.org/` as the base path on `github.io` and `/` on the final custom domain. This allows the same commit to work for both the GitHub Pages preview and VoiceToLegacy.org without rebuilding.
