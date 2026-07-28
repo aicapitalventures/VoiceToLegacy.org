@@ -200,3 +200,21 @@ textarea{min-height:120px;resize:vertical}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.button{transition:none}
 }
+/* FINAL BRAND PLACEMENT CONTROLS */
+
+.site-header img[src*="voice-to-legacy-lockup"] {
+  display: block;
+  width: 220px;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .site-header img[src*="voice-to-legacy-lockup"] {
+    width: 150px;
+    max-width: 150px;
+  }
+}
