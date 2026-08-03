@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice to Legacy Lead Backend Test</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <main id="main" class="section section-dark">
+    <div class="narrow">
+      <p class="section-kicker">Development validation only</p>
+      <h1 class="display">Voice to Legacy™ Lead Backend Test</h1>
+      <p class="lead">This page validates secure form delivery to the Supabase lead system. It is not part of the public client journey.</p>
+
+      <form class="form-panel" data-vtl-lead-form data-test-mode="true" novalidate>
+        <div class="field-grid">
+          <div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" required value="Backend Test Lead"></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required value="backend.test@example.com"></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required value="502-555-0188"></div>
+          <div class="field"><label for="city">City</label><input id="city" name="city" value="Louisville"></div>
+          <div class="field"><label for="state">State</label><input id="state" name="state" value="Kentucky"></div>
+          <div class="field"><label for="preferred_contact_method">Preferred contact method</label><select id="preferred_contact_method" name="preferred_contact_method" required><option value="email">Email</option><option value="phone">Phone</option><option value="text">Text</option><option value="zoom">Zoom</option></select></div>
+          <div class="field full"><label for="project_concept">Project concept</label><textarea id="project_concept" name="project_concept" required>A controlled backend validation record for the Voice to Legacy prospective-author intake system.</textarea></div>
+          <div class="field full"><label for="intended_audience">Intended audience</label><textarea id="intended_audience" name="intended_audience">Internal validation only.</textarea></div>
+          <div class="field full"><label for="desired_impact">Desired impact</label><textarea id="desired_impact" name="desired_impact">Verify secure storage, attribution, duplicate handling, and response behavior.</textarea></div>
+          <div class="field full"><label for="existing_materials">Existing materials</label><textarea id="existing_materials" name="existing_materials">None.</textarea></div>
+          <div class="field"><label for="best_contact_time">Best contact time</label><input id="best_contact_time" name="best_contact_time" value="Afternoon"></div>
+          <div class="field" aria-hidden="true" style="position:absolute;left:-9999px"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <div class="field full"><label><input type="checkbox" name="consent_to_contact" checked required> I consent to contact.</label></div>
+          <div class="field full"><label><input type="checkbox" name="privacy_acknowledged" checked required> I acknowledge the privacy notice.</label></div>
+        </div>
+        <div class="button-row"><button class="button button-gold" type="submit">Submit Test Lead</button></div>
+        <div class="notice" data-vtl-form-status role="status" aria-live="polite" tabindex="-1" hidden></div>
+      </form>
+
+      <section class="form-panel" aria-labelledby="suite-title" style="margin-top:2rem">
+        <p class="section-kicker">Automated validation</p>
+        <h2 id="suite-title">Run all remaining backend gates.</h2>
+        <p>This single control tests duplicate handling, invalid email, missing consent, missing privacy acknowledgment, short project concept, honeypot behavior, allowed-origin response, and mobile-width payload metadata.</p>
+        <div class="button-row"><button class="button button-gold" type="button" data-run-vtl-suite>Run Complete Validation Suite</button></div>
+        <ol data-vtl-suite-results aria-live="polite"></ol>
+      </section>
+    </div>
+  </main>
+  <script src="../assets/js/lead-intake.js" defer></script>
+  <script src="../assets/js/backend-test-suite.js" defer></script>
+</body>
+</html>
