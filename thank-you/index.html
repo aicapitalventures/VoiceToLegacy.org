@@ -19,15 +19,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .confirmation-page .site-header{position:relative}
+    .confirmation-page .page-hero{padding:72px 0 66px}
+    .confirmation-page .confirmation-reference{margin-top:28px}
+    .confirmation-page .option-card h2{color:var(--cream)}
+    @media(max-width:820px){
+      .confirmation-page .page-hero{padding:54px 0 48px}
+      .confirmation-page .page-hero .display{font-size:clamp(2.15rem,10.5vw,3.5rem)}
+      .confirmation-page .header-actions>.button{display:none}
+      .confirmation-page .header-inner{height:76px}
+      .confirmation-page .brand{width:180px}
+      .confirmation-page .button-row .button{width:100%}
+    }
+  </style>
 </head>
-<body>
+<body class="confirmation-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" data-header>
     <div class="header-inner">
       <a class="brand" href="" aria-label="Voice to Legacy home"><img src="assets/img/voice-to-legacy-lockup.webp" alt="Voice to Legacy — Every Voice. Every Story. Every Legacy."></a>
       <nav class="desktop-nav" aria-label="Primary navigation"><a href="">Home</a><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a><a href="contact/">Contact</a></nav>
-      <div class="header-actions"><a class="button button-small button-gold" href="start/">Begin Another Inquiry</a></div>
+      <div class="header-actions">
+        <a class="button button-small button-gold" href="start/">Begin Another Inquiry</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      </div>
     </div>
+    <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile navigation" data-mobile-menu>
+      <a href="">Home</a><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a><a href="contact/">Contact</a>
+      <a class="button button-gold" href="start/">Begin Another Inquiry</a>
+    </nav>
   </header>
 
   <main id="main">
@@ -36,7 +57,7 @@
         <p class="section-kicker">Submission confirmed</p>
         <h1 class="display">Your Voice to Legacy™ inquiry has been <span class="gold-text">received.</span></h1>
         <p class="lead">Thank you for trusting Divinityx Publishing Company with the first description of your story, knowledge, experience, or project idea.</p>
-        <div class="notice" data-confirmation-reference><strong>Reference:</strong> Your secure submission record has been created.</div>
+        <div class="notice confirmation-reference" data-confirmation-reference><strong>Reference:</strong> Your secure submission record has been created.</div>
       </div>
     </section>
 
@@ -66,7 +87,7 @@
         <p class="section-kicker">While you wait</p>
         <h2 class="display">Learn how Voice to Legacy™ works.</h2>
         <p class="lead">Review the process, published work, frequently asked questions, and the role Divinityx Publishing Company plays in developing qualified projects.</p>
-        <div class="button-row"><a class="button button-gold" href="how-it-works/">How It Works</a><a class="button button-outline" href="published-work/">Published Work</a><a class="button button-outline" href="faq/">FAQ</a></div>
+        <div class="button-row"><a class="button button-gold" href="how-it-works/">How It Works</a><a class="button button-dark" href="published-work/">Published Work</a><a class="button button-dark" href="faq/">FAQ</a></div>
       </div>
     </section>
   </main>
@@ -89,8 +110,14 @@
       var duplicate = sessionStorage.getItem('vtl_submission_duplicate') === 'true';
       var box = document.querySelector('[data-confirmation-reference]');
       if (box && id) box.innerHTML = '<strong>Reference ID:</strong> ' + id + (duplicate ? ' — Your earlier submission was recognized and preserved.' : '');
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'vtl_lead_submission_complete', submission_id: id || '', duplicate: duplicate });
+
+      var eventKey = id ? 'vtl_conversion_fired_' + id : '';
+      var alreadyFired = eventKey && sessionStorage.getItem(eventKey) === 'true';
+      if (id && !duplicate && !alreadyFired) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'vtl_lead_submission_complete', submission_id: id, duplicate: false });
+        sessionStorage.setItem(eventKey, 'true');
+      }
     }());
   </script>
 </body>
