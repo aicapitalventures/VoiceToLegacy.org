@@ -11,7 +11,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Turn Your Story, Experience, or Knowledge Into a Published Book</title>
-  <meta name="description" content="Begin a confidential Voice to Legacy prospective-author inquiry. You do not need to be a writer or have a finished manuscript.">
+  <meta name="description" content="Begin a private Voice to Legacy prospective-author inquiry. You do not need to be a writer or have a finished manuscript.">
   <meta name="theme-color" content="#06101f">
   <meta property="og:title" content="Your Story, Experience, or Knowledge Could Become a Published Book">
   <meta property="og:description" content="Voice to Legacy helps qualified people discover, develop, and preserve valuable intellectual property through guided conversations and professional publishing support.">
@@ -22,28 +22,64 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .lead-landing .site-header{position:relative}
+    .lead-landing .page-hero{padding:72px 0 66px}
+    .lead-landing .page-hero .display{max-width:1020px;font-size:clamp(2.35rem,5.7vw,5.4rem)}
+    .lead-landing .page-hero .lead{max-width:850px}
+    .lead-trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0 34px}
+    .lead-trust-card{padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(155deg,#102943,#071222)}
+    .lead-trust-card h2{font-size:1.1rem;margin:0 0 8px}
+    .lead-trust-card p{margin:0;color:var(--muted);font-size:.94rem}
+    .lead-form-shell{max-width:980px;margin:0 auto}
+    .lead-form-shell .display{font-size:clamp(2rem,4vw,3.5rem)}
+    .field-help{font-size:.8rem;color:var(--muted);font-weight:500}
+    .optional-fields{grid-column:1/-1;border:1px solid var(--line);border-radius:16px;padding:0 18px;background:rgba(255,255,255,.02)}
+    .optional-fields summary{cursor:pointer;padding:18px 0;font-weight:800;color:var(--gold-1)}
+    .optional-fields .optional-grid{display:grid;gap:18px;padding:0 0 18px}
+    .consent-field{grid-column:1/-1}
+    .consent-label{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:.9rem;line-height:1.45}
+    .consent-label input{width:20px;height:20px;margin:2px 0 0;padding:0;accent-color:#f5c85a}
+    .form-assurance{display:flex;gap:10px;align-items:flex-start;margin:20px 0 0;color:var(--muted);font-size:.84rem}
+    .form-assurance strong{color:var(--cream)}
+    .secondary-paths .option-card{min-height:100%}
+    .secondary-paths .option-card h2{color:var(--cream)}
+    .secondary-paths .option-card .button{width:100%}
+    @media(max-width:820px){
+      .lead-landing .page-hero{padding:54px 0 48px}
+      .lead-landing .page-hero .display{font-size:clamp(2.15rem,10.5vw,3.5rem)}
+      .lead-trust-grid{grid-template-columns:1fr}
+      .lead-landing .field-grid{grid-template-columns:1fr}
+      .lead-landing .field.full,.consent-field,.optional-fields{grid-column:1}
+      .lead-landing .form-panel{padding:24px 18px}
+      .lead-landing .button-row .button,.lead-landing .button-row button{width:100%}
+      .lead-landing .header-actions>.button{display:none}
+      .lead-landing .header-inner{height:76px}
+      .lead-landing .brand{width:180px}
+    }
+  </style>
 </head>
-<body>
+<body class="lead-landing">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" data-header>
     <div class="header-inner">
       <a class="brand" href="" aria-label="Voice to Legacy home"><img src="assets/img/voice-to-legacy-lockup.webp" alt="Voice to Legacy — Every Voice. Every Story. Every Legacy."></a>
       <nav class="desktop-nav" aria-label="Primary navigation"><a href="">Home</a><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a><a href="contact/">Contact</a></nav>
       <div class="header-actions">
-        <a class="button button-small button-gold" href="#prospective-author-form">See If Your Project Qualifies</a>
+        <a class="button button-small button-gold" href="#prospective-author-form">Start Your Inquiry</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
       </div>
     </div>
     <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile navigation" data-mobile-menu>
       <a href="">Home</a><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a><a href="contact/">Contact</a>
-      <a class="button button-gold" href="#prospective-author-form">See If Your Project Qualifies</a>
+      <a class="button button-gold" href="#prospective-author-form">Start Your Inquiry</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="page-hero">
       <div class="container reveal">
-        <p class="section-kicker">Prospective author inquiry</p>
+        <p class="section-kicker">Private prospective-author inquiry</p>
         <h1 class="display">Your Story, Experience, or Knowledge Could Become a <span class="gold-text">Published Book.</span></h1>
         <p class="lead">You do not need to be a writer, have a finished manuscript, know the final title, or understand publishing. Voice to Legacy™ helps qualified individuals discover, develop, and preserve valuable intellectual property through guided conversations and professional publishing support.</p>
         <div class="button-row"><a class="button button-gold" href="#prospective-author-form">See If Your Project Qualifies</a><a class="button button-outline" href="how-it-works/">See How It Works</a></div>
@@ -54,46 +90,56 @@
       <div class="container">
         <div class="notice"><strong>Important:</strong> Submitting an inquiry does not guarantee acceptance, publication, sales, royalties, or financial results. Qualified projects may be considered for a no-upfront-cost publishing pathway, subject to review and a separate written agreement.</div>
 
-        <div class="option-grid" style="margin-top:2rem">
-          <article class="option-card reveal"><h2>You do not need to be a writer.</h2><p>Your knowledge, lived experience, recovery, professional expertise, family history, lessons, or ideas may already contain the foundation of a meaningful publication.</p></article>
-          <article class="option-card reveal"><h2>You do not need a finished manuscript.</h2><p>Qualified authors may be guided through structured interviews, discovery sessions, planning, development, editing, and publishing preparation.</p></article>
-          <article class="option-card reveal"><h2>Your inquiry is privately reviewed.</h2><p>Divinityx Publishing Company reviews each prospective-author submission for fit, readiness, rights, audience value, and long-term publishing potential.</p></article>
+        <div class="lead-trust-grid" aria-label="What prospective authors should know">
+          <article class="lead-trust-card"><h2>No writing experience required</h2><p>Your lived experience, expertise, recovery, family history, lessons, or ideas may already contain the foundation of a meaningful publication.</p></article>
+          <article class="lead-trust-card"><h2>No finished manuscript required</h2><p>Qualified projects may be developed through structured interviews, discovery, planning, editing, and professional publishing preparation.</p></article>
+          <article class="lead-trust-card"><h2>Private company review</h2><p>Divinityx Publishing Company reviews each inquiry for fit, readiness, rights, audience value, and long-term publishing potential.</p></article>
         </div>
 
-        <form id="prospective-author-form" class="form-panel reveal" data-vtl-lead-form data-success-url="thank-you/" novalidate style="margin-top:2rem">
-          <p class="section-kicker">Begin your inquiry</p>
-          <h2 class="display">Tell us what may be worth preserving.</h2>
-          <p class="form-note">Complete this short form so the Voice to Legacy™ team can determine the strongest next step. Fields marked required must be completed.</p>
+        <div class="lead-form-shell">
+          <form id="prospective-author-form" class="form-panel reveal" data-vtl-lead-form data-success-url="thank-you/" novalidate>
+            <p class="section-kicker">Begin your inquiry</p>
+            <h2 class="display">Tell us what may be worth preserving.</h2>
+            <p class="form-note">Start with the essentials. Additional background is optional and can be discussed later.</p>
 
-          <div class="field-grid">
-            <div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" required autocomplete="name"></div>
-            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required autocomplete="tel" inputmode="tel"></div>
-            <div class="field"><label for="preferred_contact_method">Preferred contact method</label><select id="preferred_contact_method" name="preferred_contact_method" required><option value="">Choose one</option><option value="email">Email</option><option value="phone">Phone call</option><option value="text">Text message</option><option value="zoom">Zoom</option></select></div>
-            <div class="field"><label for="city">City</label><input id="city" name="city" autocomplete="address-level2"></div>
-            <div class="field"><label for="state">State</label><input id="state" name="state" autocomplete="address-level1"></div>
-            <div class="field full"><label for="project_concept">What story, experience, knowledge, or idea would you like to turn into a book or legacy project?</label><textarea id="project_concept" name="project_concept" required minlength="20" maxlength="5000" placeholder="Share enough detail for us to understand what you may want to preserve, teach, reveal, or build."></textarea></div>
-            <div class="field full"><label for="intended_audience">Who do you believe this project could help, teach, inspire, inform, or serve?</label><textarea id="intended_audience" name="intended_audience" maxlength="2000"></textarea></div>
-            <div class="field full"><label for="desired_impact">What would you want this book or project to accomplish?</label><textarea id="desired_impact" name="desired_impact" maxlength="2000"></textarea></div>
-            <div class="field full"><label for="existing_materials">Do you already have notes, recordings, journals, documents, social posts, research, or a manuscript?</label><textarea id="existing_materials" name="existing_materials" maxlength="2000"></textarea></div>
-            <div class="field full"><label for="best_contact_time">Best time to contact you</label><input id="best_contact_time" name="best_contact_time" maxlength="250" placeholder="Example: Weekdays after 5:00 PM Eastern"></div>
-            <div class="field" aria-hidden="true" style="position:absolute;left:-9999px"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-            <div class="field full"><label><input type="checkbox" name="consent_to_contact" required> I authorize Divinityx Publishing Company and Voice to Legacy™ to contact me about this inquiry using the information provided.</label></div>
-            <div class="field full"><label><input type="checkbox" name="privacy_acknowledged" required> I acknowledge the <a href="privacy/">Privacy Notice</a> and understand that submission does not create a publishing agreement or guarantee acceptance.</label></div>
-          </div>
+            <div class="field-grid">
+              <div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" required autocomplete="name"></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+              <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required autocomplete="tel" inputmode="tel"></div>
+              <div class="field"><label for="preferred_contact_method">Preferred contact method</label><select id="preferred_contact_method" name="preferred_contact_method" required><option value="">Choose one</option><option value="email">Email</option><option value="phone">Phone call</option><option value="text">Text message</option><option value="zoom">Zoom</option></select></div>
+              <div class="field"><label for="city">City <span class="field-help">(optional)</span></label><input id="city" name="city" autocomplete="address-level2"></div>
+              <div class="field"><label for="state">State <span class="field-help">(optional)</span></label><input id="state" name="state" autocomplete="address-level1"></div>
+              <div class="field full"><label for="project_concept">What story, experience, knowledge, or idea would you like to turn into a book or legacy project?</label><textarea id="project_concept" name="project_concept" required minlength="20" maxlength="5000" placeholder="Briefly describe what you want to preserve, teach, reveal, or build."></textarea><span class="field-help">A few clear sentences are enough to begin.</span></div>
+              <div class="field full"><label for="existing_materials">Do you already have any material? <span class="field-help">(optional)</span></label><select id="existing_materials" name="existing_materials"><option value="">Choose one</option><option>No existing material yet</option><option>Notes or an outline</option><option>Audio or video recordings</option><option>Journals, documents, or research</option><option>Social media posts or online content</option><option>Partial manuscript</option><option>Completed manuscript</option><option>Other materials</option></select></div>
 
-          <div class="button-row"><button class="button button-gold" type="submit">Submit My Prospective Author Inquiry</button></div>
-          <div class="notice" data-vtl-form-status role="status" aria-live="polite" tabindex="-1" hidden></div>
-        </form>
+              <details class="optional-fields">
+                <summary>Add more project detail (optional)</summary>
+                <div class="optional-grid">
+                  <div class="field"><label for="intended_audience">Who could this project help, teach, inspire, inform, or serve?</label><textarea id="intended_audience" name="intended_audience" maxlength="2000"></textarea></div>
+                  <div class="field"><label for="desired_impact">What would you want this book or project to accomplish?</label><textarea id="desired_impact" name="desired_impact" maxlength="2000"></textarea></div>
+                  <div class="field"><label for="best_contact_time">Best time to contact you</label><input id="best_contact_time" name="best_contact_time" maxlength="250" placeholder="Example: Weekdays after 5:00 PM Eastern"></div>
+                </div>
+              </details>
+
+              <div class="field" aria-hidden="true" style="position:absolute;left:-9999px"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+              <div class="consent-field"><label class="consent-label"><input type="checkbox" name="consent_to_contact" required><span>I authorize Divinityx Publishing Company and Voice to Legacy™ to contact me about this inquiry using the information provided.</span></label></div>
+              <div class="consent-field"><label class="consent-label"><input type="checkbox" name="privacy_acknowledged" required><span>I acknowledge the <a href="privacy/">Privacy Notice</a> and understand that submission does not create a publishing agreement or guarantee acceptance.</span></label></div>
+            </div>
+
+            <div class="form-assurance"><span aria-hidden="true">◆</span><span><strong>Private inquiry:</strong> Your information is reviewed by Divinityx Publishing Company for prospective-author evaluation and follow-up.</span></div>
+            <div class="button-row"><button class="button button-gold" type="submit">Submit My Prospective Author Inquiry</button></div>
+            <div class="notice" data-vtl-form-status role="status" aria-live="polite" tabindex="-1" hidden></div>
+          </form>
+        </div>
       </div>
     </section>
 
-    <section class="section section-cream">
+    <section class="section section-cream secondary-paths">
       <div class="container">
         <div class="narrow">
           <p class="section-kicker">Prefer another way to begin?</p>
           <h2 class="display">Choose a secondary intake pathway.</h2>
-          <p class="lead">The online inquiry is the fastest route. You may also use the fillable PDF, call or text, or request a guided phone or Zoom intake.</p>
+          <p class="lead">The secure online inquiry is the fastest route. You may also use the fillable PDF, call or text, or request a guided phone or Zoom intake.</p>
         </div>
         <div class="option-grid">
           <article class="option-card"><h2>Fillable PDF</h2><p>Download the prospective-author intake, complete it at your own pace, save it, and return it by email.</p><a class="button button-gold" download href="assets/docs/Voice_to_Legacy_Prospective_Author_Intake_Form.pdf">Download Intake Form</a><a class="button button-outline" href="mailto:accounting@divinityxenterprises.com?subject=Completed%20Voice%20to%20Legacy%20Intake">Email Completed Form</a></article>
