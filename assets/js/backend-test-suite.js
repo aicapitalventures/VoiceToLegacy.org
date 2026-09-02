@@ -74,8 +74,19 @@
       {
         name: 'Duplicate handling',
         run: async () => {
-          const { status, body } = await request(basePayload);
-          return [status === 200 && body.ok === true && body.duplicate === true && Boolean(body.submission_id), `HTTP ${status}; duplicate=${String(body.duplicate)}`];
+          const stamp = Date.now();
+          const duplicatePayload = {
+            ...basePayload,
+            full_name: 'Duplicate Backend Test Lead',
+            email: `duplicate.test.${stamp}@example.com`,
+            project_concept: `A unique duplicate-handling validation record for the Voice to Legacy secure prospective-author system ${stamp}.`,
+          };
+          const seed = await request(duplicatePayload);
+          if (!(seed.status === 201 && seed.body.ok === true && Boolean(seed.body.submission_id) && seed.body.duplicate === false)) {
+            return [false, `seed HTTP ${seed.status}; duplicate=${String(seed.body.duplicate)}`];
+          }
+          const duplicate = await request(duplicatePayload);
+          return [duplicate.status === 200 && duplicate.body.ok === true && duplicate.body.duplicate === true && Boolean(duplicate.body.submission_id), `seed HTTP ${seed.status}; duplicate HTTP ${duplicate.status}; duplicate=${String(duplicate.body.duplicate)}`];
         },
       },
       {
