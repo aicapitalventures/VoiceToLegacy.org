@@ -101,7 +101,7 @@
           <form id="prospective-author-form" class="form-panel reveal" data-vtl-lead-form data-success-url="thank-you/" novalidate>
             <p class="section-kicker">Begin your voice discovery</p>
             <h2 class="display">Let's start with the essentials.</h2>
-            <p class="form-note">We'll listen to what your voice should leave behind. You can share more details in the guided questions below, or we can explore them together in a call.</p>
+            <p class="form-note">The first discovery response is required so we have enough context to review your inquiry. The remaining details are optional and can also be explored in a call.</p>
 
             <div class="field-grid">
               <div class="field"><label for="full_name">Your name</label><input id="full_name" name="full_name" required autocomplete="name"></div>
@@ -114,11 +114,11 @@
               <details class="optional-fields" open>
                 <summary>Tell us what your voice should leave behind</summary>
                 <div class="optional-grid">
-                  <div class="field full"><label for="discovery_prompt_1">What is the message, story, wisdom, testimony, or life lesson you feel called to leave behind?</label><textarea id="discovery_prompt_1" name="project_concept" minlength="20" maxlength="5000" required placeholder="Describe what you believe deserves to be preserved."></textarea><span class="field-help">Required. A few natural sentences are enough.</span></div>
-                  <div class="field full"><label for="discovery_prompt_2">Why does this message matter to you, and why does it matter now?</label><textarea id="discovery_prompt_2" name="intended_audience" maxlength="2000" placeholder="Share what makes this important at this moment in your life."></textarea></div>
-                  <div class="field full"><label for="discovery_prompt_3">Who do you believe needs to hear this message?</label><textarea id="discovery_prompt_3" name="desired_impact" maxlength="2000" placeholder="Who would benefit from knowing this?"></textarea></div>
-                  <div class="field full"><label for="discovery_prompt_4">What did life teach you that you do not want someone else to learn the hard way?</label><textarea id="discovery_prompt_4" name="existing_materials" maxlength="2000" placeholder="What wisdom or warning would help others?"></textarea></div>
-                  <div class="field full"><label for="discovery_prompt_5">If your voice could outlive this conversation, what would you want it to make sure people remember?</label><textarea id="discovery_prompt_5" name="best_contact_time" maxlength="2000" placeholder="What is the essence of what you want remembered?"></textarea></div>
+                  <div class="field full"><label for="discovery_prompt_1">What is the message, story, wisdom, testimony, or life lesson you feel called to leave behind?</label><textarea id="discovery_prompt_1" name="project_concept" minlength="20" maxlength="5000" required placeholder="Describe what you believe deserves to be preserved, why it matters, and what you do not want lost."></textarea><span class="field-help">Required. At least 20 characters; a few natural sentences are enough.</span></div>
+                  <div class="field full"><label for="intended_audience">Who do you believe most needs to hear this message? <span class="field-help">(optional)</span></label><textarea id="intended_audience" name="intended_audience" maxlength="2000" placeholder="Family, young people, a community, professionals, people facing a specific challenge, or someone else."></textarea></div>
+                  <div class="field full"><label for="desired_impact">What do you hope this story or message helps people understand, feel, or do? <span class="field-help">(optional)</span></label><textarea id="desired_impact" name="desired_impact" maxlength="2000" placeholder="Describe the impact you hope your voice can have."></textarea></div>
+                  <div class="field full"><label for="existing_materials">Do you already have notes, recordings, photos, journals, documents, or manuscript material? <span class="field-help">(optional)</span></label><textarea id="existing_materials" name="existing_materials" maxlength="2000" placeholder="Briefly describe any material that already exists. Do not upload or paste sensitive files here."></textarea></div>
+                  <div class="field full"><label for="best_contact_time">Best time to contact you <span class="field-help">(optional)</span></label><input id="best_contact_time" name="best_contact_time" maxlength="250" placeholder="Example: Weekdays after 5 PM Eastern"></div>
                   <div class="field full"><p><strong>Privacy boundary:</strong> Do not submit highly sensitive details here. If your story has material that should be handled carefully, kept private, or not shared publicly, tell your advisor during follow-up so those boundaries can be documented appropriately.</p></div>
                 </div>
               </details>
@@ -126,15 +126,13 @@
               <div class="form-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
 
               <fieldset style="border:0;padding:0;margin:0">
-                <legend style="font-weight:800;margin-bottom:1rem">What are you comfortable with?</legend>
+                <legend style="font-weight:800;margin-bottom:1rem">Required permissions</legend>
                 <div class="consent-field"><label class="consent-label"><input type="checkbox" name="consent_to_contact" required><span>I authorize Divinityx Publishing Company and Voice to Legacy™ to contact me using my phone or email to discuss this voice discovery.</span></label></div>
                 <div class="consent-field"><label class="consent-label"><input type="checkbox" name="privacy_acknowledged" required><span>I acknowledge the <a href="privacy/">Privacy Notice</a> and understand that this discovery submission does not create a publishing agreement or guarantee acceptance.</span></label></div>
-                <div class="consent-field"><label class="consent-label"><input type="checkbox" name="consent_recording" value="true"><span>I give permission for Divinityx Publishing Company to record, transcribe, and securely store any future guided discovery calls or voice submissions I authorize.</span></label></div>
-                <div class="consent-field"><label class="consent-label"><input type="checkbox" name="consent_ai_analysis" value="true"><span>I give permission for internal AI-assisted analysis of my voice discovery to identify themes, audience, and publishing fit.</span></label></div>
               </fieldset>
             </div>
 
-            <div class="form-assurance"><span aria-hidden="true">◆</span><span><strong>Your discovery is private:</strong> Your voice discovery is reviewed by Divinityx Publishing Company for prospective-author evaluation and follow-up. We listen first.</span></div>
+            <div class="form-assurance"><span aria-hidden="true">◆</span><span><strong>Current capability boundary:</strong> This website form does not record audio and does not itself authorize recording, transcription, or AI processing. If a later guided session or accepted project uses those capabilities, applicable permissions will be handled separately before use.</span></div>
             <div class="button-row"><button class="button button-gold" type="submit">Submit My Voice Discovery</button></div>
             <div class="notice" data-vtl-form-status role="status" aria-live="polite" tabindex="-1" hidden></div>
           </form>
@@ -147,7 +145,7 @@
         <div class="narrow">
           <p class="section-kicker">Prefer another way to share?</p>
           <h2 class="display">Choose a voice discovery pathway.</h2>
-          <p class="lead">The online discovery conversation is the fastest way to start. You can also request a phone or Zoom call with a Voice to Legacy advisor. Once you are scheduled, your advisor will provide any preparation materials you need.</p>
+          <p class="lead">The online discovery form is the fastest way to start. You can also request a phone or Zoom conversation with a Voice to Legacy advisor. Once you are scheduled, your advisor will provide any preparation materials you need.</p>
         </div>
         <div class="option-grid">
           <article class="option-card"><h2>Guided Phone Call</h2><p>Request a call with a Voice to Legacy advisor to explore your voice discovery together. A real conversation often reveals more than writing.</p><a class="button button-gold" href="tel:+15022708828">Call 502-270-8828</a><a class="button button-outline" href="mailto:accounting@divinityxenterprises.com?subject=Voice%20to%20Legacy%20Guided%20Discovery%20Call">Email to Request Call</a></article>
