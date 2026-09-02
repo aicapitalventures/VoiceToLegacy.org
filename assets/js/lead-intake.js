@@ -84,8 +84,6 @@
       best_contact_time: String(data.get('best_contact_time') || ''),
       consent_to_contact: data.get('consent_to_contact') === 'on',
       privacy_acknowledged: data.get('privacy_acknowledged') === 'on',
-      consent_recording: data.get('consent_recording') === 'true' || data.get('consent_recording') === 'on' || false,
-      consent_ai_analysis: data.get('consent_ai_analysis') === 'true' || data.get('consent_ai_analysis') === 'on' || false,
       consent_text_version: isTest ? 'v1.0-test' : 'v1.0-production',
       source_page: location.pathname,
       referrer: document.referrer,
