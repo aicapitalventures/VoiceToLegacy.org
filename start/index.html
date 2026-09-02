@@ -45,6 +45,7 @@
     .secondary-paths .option-card{min-height:100%}
     .secondary-paths .option-card h2{color:var(--cream)}
     .secondary-paths .option-card .button{width:100%}
+    .form-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
     @media(max-width:820px){
       .lead-landing .page-hero{padding:54px 0 48px}
       .lead-landing .page-hero .display{font-size:clamp(2.15rem,10.5vw,3.5rem)}
@@ -66,13 +67,13 @@
       <a class="brand" href="" aria-label="Voice to Legacy home"><img src="assets/img/voice-to-legacy-lockup.webp" alt="Voice to Legacy — Every Voice. Every Story. Every Legacy."></a>
       <nav class="desktop-nav" aria-label="Primary navigation"><a href="">Home</a><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a><a href="contact/">Contact</a></nav>
       <div class="header-actions">
-        <a class="button button-small button-gold" href="#prospective-author-form">Start Your Inquiry</a>
+        <a class="button button-small button-gold" href="#prospective-author-form">Start Your Voice Discovery</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
       </div>
     </div>
     <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile navigation" data-mobile-menu>
       <a href="">Home</a><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a><a href="contact/">Contact</a>
-      <a class="button button-gold" href="#prospective-author-form">Start Your Inquiry</a>
+      <a class="button button-gold" href="#prospective-author-form">Start Your Voice Discovery</a>
     </nav>
   </header>
 
@@ -111,16 +112,18 @@
               <div class="field"><label for="state">State <span class="field-help">(optional)</span></label><input id="state" name="state" autocomplete="address-level1"></div>
 
               <details class="optional-fields" open>
-                <summary>Share what your voice should leave behind (optional)</summary>
+                <summary>Tell us what your voice should leave behind</summary>
                 <div class="optional-grid">
-                  <div class="field full"><label for="discovery_prompt_1">What is the message, story, wisdom, testimony, or life lesson you feel called to leave behind?</label><textarea id="discovery_prompt_1" name="project_concept" maxlength="5000" placeholder="Describe what you believe deserves to be preserved."></textarea><span class="field-help">A few natural sentences are enough.</span></div>
+                  <div class="field full"><label for="discovery_prompt_1">What is the message, story, wisdom, testimony, or life lesson you feel called to leave behind?</label><textarea id="discovery_prompt_1" name="project_concept" minlength="20" maxlength="5000" required placeholder="Describe what you believe deserves to be preserved."></textarea><span class="field-help">Required. A few natural sentences are enough.</span></div>
                   <div class="field full"><label for="discovery_prompt_2">Why does this message matter to you, and why does it matter now?</label><textarea id="discovery_prompt_2" name="intended_audience" maxlength="2000" placeholder="Share what makes this important at this moment in your life."></textarea></div>
                   <div class="field full"><label for="discovery_prompt_3">Who do you believe needs to hear this message?</label><textarea id="discovery_prompt_3" name="desired_impact" maxlength="2000" placeholder="Who would benefit from knowing this?"></textarea></div>
                   <div class="field full"><label for="discovery_prompt_4">What did life teach you that you do not want someone else to learn the hard way?</label><textarea id="discovery_prompt_4" name="existing_materials" maxlength="2000" placeholder="What wisdom or warning would help others?"></textarea></div>
                   <div class="field full"><label for="discovery_prompt_5">If your voice could outlive this conversation, what would you want it to make sure people remember?</label><textarea id="discovery_prompt_5" name="best_contact_time" maxlength="2000" placeholder="What is the essence of what you want remembered?"></textarea></div>
-                  <div class="field full"><label for="sensitivity_prompt">Is there anything about this story that should be handled carefully, kept private, or not shared publicly? <span class="field-help">(optional)</span></label><textarea id="sensitivity_prompt" name="website" maxlength="2000" placeholder="Let us know any boundaries or sensitivities about your story."></textarea></div>
+                  <div class="field full"><p><strong>Privacy boundary:</strong> Do not submit highly sensitive details here. If your story has material that should be handled carefully, kept private, or not shared publicly, tell your advisor during follow-up so those boundaries can be documented appropriately.</p></div>
                 </div>
               </details>
+
+              <div class="form-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
 
               <fieldset style="border:0;padding:0;margin:0">
                 <legend style="font-weight:800;margin-bottom:1rem">What are you comfortable with?</legend>
@@ -144,7 +147,7 @@
         <div class="narrow">
           <p class="section-kicker">Prefer another way to share?</p>
           <h2 class="display">Choose a voice discovery pathway.</h2>
-          <p class="lead">The online discovery conversation is the fastest way to start. You can also request a phone or Zoom call with a Voice to Legacy advisor, or download a guided voice discovery guide.</p>
+          <p class="lead">The online discovery conversation is the fastest way to start. You can also request a phone or Zoom call with a Voice to Legacy advisor. Once you are scheduled, your advisor will provide any preparation materials you need.</p>
         </div>
         <div class="option-grid">
           <article class="option-card"><h2>Guided Phone Call</h2><p>Request a call with a Voice to Legacy advisor to explore your voice discovery together. A real conversation often reveals more than writing.</p><a class="button button-gold" href="tel:+15022708828">Call 502-270-8828</a><a class="button button-outline" href="mailto:accounting@divinityxenterprises.com?subject=Voice%20to%20Legacy%20Guided%20Discovery%20Call">Email to Request Call</a></article>
@@ -160,7 +163,7 @@
     <div class="container footer-grid">
       <div class="footer-brand"><img src="assets/img/divinityx-publisher-crest.webp" alt="Divinityx Publishing Company"><p>Voice to Legacy™ is a legacy-preservation and author-development program of Divinityx Publishing Company.</p></div>
       <div><h2>Explore</h2><a href="how-it-works/">How It Works</a><a href="published-work/">Published Work</a><a href="about/">About</a><a href="faq/">FAQ</a></div>
-      <div><h2>Begin</h2><a href="start/">Prospective Author Inquiry</a><a href="tel:+15022708828">Call 502-270-8828</a><a href="sms:+15022708828">Text 502-270-8828</a><a href="mailto:accounting@divinityxenterprises.com">Email an Advisor</a></div>
+      <div><h2>Begin</h2><a href="start/">Start Your Voice Discovery</a><a href="tel:+15022708828">Call 502-270-8828</a><a href="sms:+15022708828">Text 502-270-8828</a><a href="mailto:accounting@divinityxenterprises.com">Email an Advisor</a></div>
       <div><h2>Legal</h2><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="accessibility/">Accessibility</a></div>
     </div>
     <div class="footer-bottom container"><p>© <span data-year>2026</span> Divinityx Enterprises LLC d/b/a Divinityx Publishing Company. All rights reserved.</p><p>VoiceToLegacy.org · Kentucky · Indiana · Illinois</p></div>
