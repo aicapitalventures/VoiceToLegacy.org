@@ -84,6 +84,8 @@
       best_contact_time: String(data.get('best_contact_time') || ''),
       consent_to_contact: data.get('consent_to_contact') === 'on',
       privacy_acknowledged: data.get('privacy_acknowledged') === 'on',
+      consent_recording: data.get('consent_recording') === 'true' || data.get('consent_recording') === 'on' || false,
+      consent_ai_analysis: data.get('consent_ai_analysis') === 'true' || data.get('consent_ai_analysis') === 'on' || false,
       consent_text_version: isTest ? 'v1.0-test' : 'v1.0-production',
       source_page: location.pathname,
       referrer: document.referrer,
@@ -112,8 +114,8 @@
       }
 
       setStatus(result.duplicate
-        ? `Your information was already received. Reference ID: ${result.submission_id}`
-        : `Your information was received successfully. Reference ID: ${result.submission_id}`);
+        ? `Your voice discovery was already received. Reference ID: ${result.submission_id}`
+        : `Your voice discovery was received. Reference ID: ${result.submission_id}`);
       form.dataset.lastSubmissionId = result.submission_id || '';
       window.dispatchEvent(new CustomEvent('vtl:lead-submitted', { detail: result }));
 
