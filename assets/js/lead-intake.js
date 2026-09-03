@@ -122,7 +122,7 @@
         sessionStorage.setItem('vtl_submission_id', result.submission_id || '');
         sessionStorage.setItem('vtl_submission_duplicate', result.duplicate ? 'true' : 'false');
         window.setTimeout(() => {
-          location.assign(new URL(successUrl, location.href).href);
+          location.assign(new URL(successUrl, document.baseURI).href);
         }, 500);
       }
     } catch (error) {
