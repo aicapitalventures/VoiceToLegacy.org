@@ -81,6 +81,7 @@
       desired_impact: String(data.get('desired_impact') || ''),
       existing_materials: String(data.get('existing_materials') || ''),
       preferred_contact_method: String(data.get('preferred_contact_method') || ''),
+      discovery_mode: form.dataset.discoveryMode || 'written',
       best_contact_time: String(data.get('best_contact_time') || ''),
       consent_to_contact: data.get('consent_to_contact') === 'on',
       privacy_acknowledged: data.get('privacy_acknowledged') === 'on',
