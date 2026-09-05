@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
   <script>
-    (function () {
-      var base = document.createElement('base');
-      base.href = location.hostname.endsWith('github.io') ? '/VoiceToLegacy.org/' : '/';
-      document.head.appendChild(base);
-    }());
+    document.write('<base href="' + (location.hostname.endsWith('github.io') ? '/VoiceToLegacy.org/' : '/') + '">');
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,12 +41,36 @@
     .secondary-paths .option-card{min-height:100%}
     .secondary-paths .option-card h2{color:var(--cream)}
     .secondary-paths .option-card .button{width:100%}
+    .voice-discovery-shell{max-width:980px;margin:0 auto 56px;display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}
+    .voice-discovery-intro .lead{font-size:1rem}
+    .voice-recorder{padding:28px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(155deg,#102943,#071222);box-shadow:var(--shadow)}
+    .voice-recorder-header{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:15px;color:var(--muted);font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .voice-state{color:var(--gold-2)}
+    .voice-prompt{padding:26px 0 18px}
+    .voice-prompt h3{font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.3;margin:0;color:var(--cream)}
+    .voice-meter{display:flex;align-items:center;gap:9px;font-variant-numeric:tabular-nums;font-weight:800;color:var(--cream);font-size:1.3rem}
+    .voice-meter-dot{width:12px;height:12px;border-radius:50%;background:#697487;display:inline-block}
+    .voice-meter-dot.recording{background:#ed7567;box-shadow:0 0 0 7px rgba(237,117,103,.14);animation:pulse-recording 1.2s infinite}
+    .voice-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .voice-actions .button{min-height:46px;border-radius:12px;padding:.7rem 1rem}
+    .voice-actions .button:disabled{opacity:.42;cursor:not-allowed;transform:none;box-shadow:none}
+    .voice-playback{width:100%;margin-top:18px}
+    .voice-help{color:var(--muted);font-size:.88rem;margin:18px 0 0}
+    .voice-help a{color:var(--gold-1);font-weight:800}
+    .voice-consents{display:grid;gap:14px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+    .voice-status{margin-top:20px}
+    .voice-submit{margin-top:20px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted)}
+    .voice-submit p{margin-top:0}
+    .voice-submit strong{color:var(--cream)}
+    .voice-status[data-state="error"]{border-color:rgba(234,165,156,.5);color:#f0c6be;background:rgba(160,55,45,.14)}
+    @keyframes pulse-recording{50%{opacity:.45;transform:scale(.8)}}
     .form-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
     @media(max-width:820px){
       .lead-landing .page-hero{padding:54px 0 48px}
       .lead-landing .page-hero .display{font-size:clamp(2.15rem,10.5vw,3.5rem)}
       .lead-trust-grid{grid-template-columns:1fr}
       .lead-landing .field-grid{grid-template-columns:1fr}
+      .voice-discovery-shell{grid-template-columns:1fr}
       .lead-landing .field.full,.consent-field,.optional-fields{grid-column:1}
       .lead-landing .form-panel{padding:24px 18px}
       .lead-landing .button-row .button,.lead-landing .button-row button{width:100%}
@@ -83,12 +103,14 @@
         <p class="section-kicker">Private voice discovery</p>
         <h1 class="display"><span class="gold-text">Start Your Voice Discovery.</span></h1>
         <p class="lead">Tell us what your voice should leave behind. You do not need to be a writer, have a finished manuscript, or sound polished. The first step is to help us hear the real message.</p>
-        <div class="button-row"><a class="button button-gold" href="#prospective-author-form">Begin Guided Discovery</a><a class="button button-outline" href="how-it-works/">See How It Works</a></div>
+        <div class="button-row"><a class="button button-gold" href="#voice-discovery">Record My Voice Discovery</a><a class="button button-outline" href="#prospective-author-form">Write My Discovery</a></div>
       </div>
     </section>
 
     <section class="section section-dark">
       <div class="container">
+        <div class="notice"><strong>Founder availability notice:</strong> Voice to Legacy™ remains open for Voice Discovery submissions. Founder review and personal response times are temporarily limited and may take several weeks. Your submission will be securely preserved for review. Submitting a Voice Discovery does not create acceptance, a publishing agreement, or a production commitment.</div>
+
         <div class="notice"><strong>Important:</strong> Submitting an inquiry does not guarantee acceptance, publication, sales, royalties, or financial results. Qualified projects may be considered for a no-upfront-cost publishing pathway, subject to review and a separate written agreement.</div>
 
         <div class="lead-trust-grid" aria-label="Voice discovery fundamentals">
@@ -97,12 +119,11 @@
           <article class="lead-trust-card"><h2>Private discovery process</h2><p>Divinityx Publishing Company reviews your voice discovery for fit, message clarity, audience value, and publishing potential—privately and carefully.</p></article>
         </div>
 
-        <div class="lead-form-shell">
-          <form id="prospective-author-form" class="form-panel reveal" data-vtl-lead-form data-success-url="thank-you/" novalidate>
-            <p class="section-kicker">Begin your voice discovery</p>
-            <h2 class="display">Let's start with the essentials.</h2>
-            <p class="form-note">The first discovery response is required so we have enough context to review your inquiry. The remaining details are optional and can also be explored in a call.</p>
-
+        <form id="prospective-author-form" class="lead-form-shell" data-vtl-lead-form data-discovery-mode="written" data-success-url="thank-you/" novalidate>
+          <section class="form-panel shared-contact-panel reveal" aria-labelledby="shared-contact-heading">
+            <p class="section-kicker">First, tell us how to reach you</p>
+            <h2 id="shared-contact-heading" class="display">Let's start with you.</h2>
+            <p class="form-note">These details are shared by every Voice Discovery pathway. Choose how you would like to tell your story after you complete them.</p>
             <div class="field-grid">
               <div class="field"><label for="full_name">Your name</label><input id="full_name" name="full_name" required autocomplete="name"></div>
               <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
@@ -110,7 +131,62 @@
               <div class="field"><label for="preferred_contact_method">How should we reach you?</label><select id="preferred_contact_method" name="preferred_contact_method" required><option value="">Choose one</option><option value="email">Email</option><option value="phone">Phone call</option><option value="text">Text message</option><option value="zoom">Zoom call</option></select></div>
               <div class="field"><label for="city">City <span class="field-help">(optional)</span></label><input id="city" name="city" autocomplete="address-level2"></div>
               <div class="field"><label for="state">State <span class="field-help">(optional)</span></label><input id="state" name="state" autocomplete="address-level1"></div>
+              <div class="field full"><label for="best_contact_time">Best time to contact you <span class="field-help">(optional)</span></label><input id="best_contact_time" name="best_contact_time" maxlength="250" placeholder="Example: Weekdays after 5 PM Eastern"></div>
+              <div class="form-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+              <fieldset style="border:0;padding:0;margin:0">
+                <legend style="font-weight:800;margin-bottom:1rem">Required permissions</legend>
+                <div class="consent-field"><label class="consent-label"><input type="checkbox" name="consent_to_contact" required><span>I authorize Divinityx Publishing Company and Voice to Legacy™ to contact me using my phone or email to discuss this voice discovery.</span></label></div>
+                <div class="consent-field"><label class="consent-label"><input type="checkbox" name="privacy_acknowledged" required><span>I acknowledge the <a href="privacy/">Privacy Notice</a> and understand that this discovery submission does not create a publishing agreement or guarantee acceptance.</span></label></div>
+              </fieldset>
+            </div>
+          </section>
 
+          <div class="pathway-heading">
+            <p class="section-kicker">How would you like to begin?</p>
+            <h2 class="display">Choose your discovery pathway.</h2>
+          </div>
+
+        <section id="voice-discovery" class="voice-discovery-shell reveal" data-voice-discovery>
+          <div class="voice-discovery-intro">
+            <p class="section-kicker">Primary pathway · six guided questions</p>
+            <h2 class="display">Let your voice lead.</h2>
+            <p class="lead">Before you begin, know exactly what happens: your browser will ask for microphone permission, each answer will be recorded as a separate clip, and you can listen or re-record before continuing. Accepted clips are sent only through the secure backend contract when it is enabled.</p>
+            <div class="notice"><strong>Private capability boundary:</strong> Do not include highly sensitive information. Audio is uploaded only to a private storage path authorized by the secure backend; this page never receives a public audio URL or a service key.</div>
+          </div>
+          <div class="voice-recorder" data-voice-recorder data-voice-api-base="https://cywudaqttafinhujonvu.supabase.co/functions/v1">
+            <div class="voice-recorder-header"><span class="voice-step" data-voice-step>Ready when you are</span><span class="voice-state" data-voice-state>Not started</span></div>
+            <div class="voice-prompt" data-voice-prompt>
+              <span class="section-kicker" data-prompt-count>Prompt 1 of 6</span>
+              <h3 data-prompt-text>What story, message, wisdom, testimony, knowledge, or life lesson do you believe should outlive you?</h3>
+            </div>
+            <div class="voice-meter" aria-live="polite"><span class="voice-meter-dot" data-recording-dot aria-hidden="true"></span><span data-elapsed>00:00</span></div>
+            <div class="voice-actions">
+              <button class="button button-gold" type="button" data-record-start>Record Answer</button>
+              <button class="button button-outline" type="button" data-record-stop disabled>Stop</button>
+              <button class="button button-outline" type="button" data-record-play disabled>Play</button>
+              <button class="button button-outline" type="button" data-record-again disabled>Re-record</button>
+              <button class="button button-gold" type="button" data-record-accept disabled>Use This Answer</button>
+            </div>
+            <audio class="voice-playback" data-playback controls hidden></audio>
+            <p class="voice-help" data-voice-help>Recording begins only when you press Record Answer. You can use the written pathway below if microphone access is unavailable or undesirable.</p>
+            <div class="voice-consents" data-voice-consents hidden>
+              <label class="consent-label"><input type="checkbox" data-recording-consent> <span>I authorize Voice to Legacy™ / Divinityx Publishing Company to record and securely store the Voice Discovery audio I submit for private project evaluation.</span></label>
+              <label class="consent-label"><input type="checkbox" data-transcription-consent> <span>I authorize a private transcription of submitted Voice Discovery audio for project review and author-development purposes.</span></label>
+            </div>
+            <div class="notice voice-status" data-voice-status role="status" aria-live="polite" hidden></div>
+            <div class="voice-submit" data-voice-submit hidden>
+              <p><strong>Your answers are ready to submit.</strong> Add your contact details and required acknowledgments below, then securely submit this Voice Discovery.</p>
+              <button class="button button-gold" type="button" data-voice-finish>Securely Submit Voice Discovery</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-panel written-discovery-panel reveal" aria-labelledby="written-discovery-heading">
+            <p class="section-kicker">Alternative pathway · write instead</p>
+            <h2 id="written-discovery-heading" class="display">Write My Discovery.</h2>
+            <p class="form-note">Prefer to write? The first discovery response is required so we have enough context to review your inquiry. The remaining details are optional and can also be explored in a guided call.</p>
+
+            <div class="field-grid">
               <details class="optional-fields" open>
                 <summary>Tell us what your voice should leave behind</summary>
                 <div class="optional-grid">
@@ -118,25 +194,16 @@
                   <div class="field full"><label for="intended_audience">Who do you believe most needs to hear this message? <span class="field-help">(optional)</span></label><textarea id="intended_audience" name="intended_audience" maxlength="2000" placeholder="Family, young people, a community, professionals, people facing a specific challenge, or someone else."></textarea></div>
                   <div class="field full"><label for="desired_impact">What do you hope this story or message helps people understand, feel, or do? <span class="field-help">(optional)</span></label><textarea id="desired_impact" name="desired_impact" maxlength="2000" placeholder="Describe the impact you hope your voice can have."></textarea></div>
                   <div class="field full"><label for="existing_materials">Do you already have notes, recordings, photos, journals, documents, or manuscript material? <span class="field-help">(optional)</span></label><textarea id="existing_materials" name="existing_materials" maxlength="2000" placeholder="Briefly describe any material that already exists. Do not upload or paste sensitive files here."></textarea></div>
-                  <div class="field full"><label for="best_contact_time">Best time to contact you <span class="field-help">(optional)</span></label><input id="best_contact_time" name="best_contact_time" maxlength="250" placeholder="Example: Weekdays after 5 PM Eastern"></div>
                   <div class="field full"><p><strong>Privacy boundary:</strong> Do not submit highly sensitive details here. If your story has material that should be handled carefully, kept private, or not shared publicly, tell your advisor during follow-up so those boundaries can be documented appropriately.</p></div>
                 </div>
               </details>
-
-              <div class="form-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-
-              <fieldset style="border:0;padding:0;margin:0">
-                <legend style="font-weight:800;margin-bottom:1rem">Required permissions</legend>
-                <div class="consent-field"><label class="consent-label"><input type="checkbox" name="consent_to_contact" required><span>I authorize Divinityx Publishing Company and Voice to Legacy™ to contact me using my phone or email to discuss this voice discovery.</span></label></div>
-                <div class="consent-field"><label class="consent-label"><input type="checkbox" name="privacy_acknowledged" required><span>I acknowledge the <a href="privacy/">Privacy Notice</a> and understand that this discovery submission does not create a publishing agreement or guarantee acceptance.</span></label></div>
-              </fieldset>
             </div>
 
-            <div class="form-assurance"><span aria-hidden="true">◆</span><span><strong>Current capability boundary:</strong> This website form does not record audio and does not itself authorize recording, transcription, or AI processing. If a later guided session or accepted project uses those capabilities, applicable permissions will be handled separately before use.</span></div>
+            <div class="form-assurance"><span aria-hidden="true">◆</span><span><strong>Written pathway:</strong> This form does not record audio or create a transcription. Recording and transcription permissions are requested only in the voice pathway above, and submission does not create a publishing agreement.</span></div>
             <div class="button-row"><button class="button button-gold" type="submit">Submit My Voice Discovery</button></div>
             <div class="notice" data-vtl-form-status role="status" aria-live="polite" tabindex="-1" hidden></div>
-          </form>
-        </div>
+        </section>
+        </form>
       </div>
     </section>
 
@@ -145,10 +212,10 @@
         <div class="narrow">
           <p class="section-kicker">Prefer another way to share?</p>
           <h2 class="display">Choose a voice discovery pathway.</h2>
-          <p class="lead">The online discovery form is the fastest way to start. You can also request a phone or Zoom conversation with a Voice to Legacy advisor. Once you are scheduled, your advisor will provide any preparation materials you need.</p>
+          <p class="lead">Prefer a real conversation? Request a private Guided Voice Discovery by phone or Zoom. We’ll guide the conversation while you simply tell your story.</p>
         </div>
         <div class="option-grid">
-          <article class="option-card"><h2>Guided Phone Call</h2><p>Request a call with a Voice to Legacy advisor to explore your voice discovery together. A real conversation often reveals more than writing.</p><a class="button button-gold" href="tel:+15022708828">Call 502-270-8828</a><a class="button button-outline" href="mailto:accounting@divinityxenterprises.com?subject=Voice%20to%20Legacy%20Guided%20Discovery%20Call">Email to Request Call</a></article>
+          <article class="option-card"><h2>Have a Guided Discovery Call</h2><p>Request a private phone or Zoom conversation with a Voice to Legacy advisor. Live calls are not recorded or transcribed automatically.</p><a class="button button-gold" href="tel:+15022708828">Call 502-270-8828</a><a class="button button-outline" href="mailto:accounting@divinityxenterprises.com?subject=Voice%20to%20Legacy%20Guided%20Discovery%20Call">Email to Request Call</a></article>
           <article class="option-card"><h2>Text Message</h2><p>Start a text conversation with Voice to Legacy. Share your voice discovery on your own schedule and timeline.</p><a class="button button-gold" href="sms:+15022708828">Text 502-270-8828</a></article>
           <article class="option-card"><h2>Already Scheduled?</h2><p>Already scheduled your Voice Discovery? Your advisor will provide any preparation materials you need. No workbook is required to begin.</p><a class="button button-outline" href="mailto:accounting@divinityxenterprises.com?subject=Voice%20to%20Legacy%20Discovery%20Question">Email a Question</a></article>
         </div>
@@ -169,5 +236,6 @@
 
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/lead-intake.js" defer></script>
+  <script src="assets/js/voice-discovery.js" defer></script>
 </body>
 </html>

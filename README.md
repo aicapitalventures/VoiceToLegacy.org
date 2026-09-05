@@ -12,6 +12,7 @@ A new, independent, static-first VoiceToLegacy.org starter build for GitHub Page
 - Published-work proof
 - FAQ, contact, privacy, terms, and accessibility pages
 - No package manager or build process required
+- Guided six-prompt browser voice recorder with separate local clips, playback, re-recording, and explicit capability consent
 - GitHub Pages ready
 
 ## Local preview
@@ -53,7 +54,18 @@ Do not add the CNAME before the preview site is approved and DNS is ready.
 
 ## Important starter boundary
 
-This repository is public-site code only. It does not provide secure accounts, private uploads, agreement execution, audio/video recording, transcripts, manuscript drafts, royalty records, or persistent client-status data. Those require a separate secure application/backend.
+This repository is public-site code only. The guided recorder uses `MediaDevices` and `MediaRecorder` to hold separate clips in browser memory for the current page session. It contains the frontend contract for secure upload, but does not enable it until a backend base URL is configured on the recorder. Secure private uploads, voice-discovery session/answer tables, transcription, agreement execution, manuscript drafts, royalty records, and persistent client-status data require a separate secure application/backend. Do not represent browser-held clips as received submissions.
+
+### VTL-MARPC-002 backend activation requirement
+
+The public recorder is **READY / PROVIDER ACTIVATION REQUIRED** for backend integration. Configure its `data-voice-api-base` with the approved same-origin or Edge Function gateway. The gateway must expose these JSON endpoints:
+
+- `POST /voice-discovery/session`: accepts contact identity, `discovery_mode`, consent flags, source page, and prompt version; returns `voice_discovery_session_id` and optional `reference_id`.
+- `POST /voice-discovery/upload-authorize`: accepts session ID, prompt key/version, MIME type, duration, and both voice consents; returns `answer_id`, randomized private `object_path`, short-lived `signed_upload_url`, optional `upload_method` and `upload_headers`, and the current `transcription_status`.
+- `POST /voice-discovery/upload-complete`: accepts session ID, answer ID, prompt key, object path, and upload status; returns authoritative `recording_status` and `transcription_status`.
+- `POST /voice-discovery/session-complete`: accepts the session ID, consent flags, and stored answer IDs/statuses; returns the final `reference_id` only after persistence succeeds.
+
+The browser uploads each Blob directly to the returned signed URL, never constructs a public storage URL, and retries only answers that are not `stored`. The backend must validate origin, session ownership, rate limits, consent, prompt version, MIME type, and object path rather than trusting browser-supplied identifiers. It must keep audio and transcripts private, and the browser must never receive a service-role or transcription-provider secret. Automatic transcription remains **READY / PROVIDER ACTIVATION REQUIRED**; no new paid provider or financial commitment is activated by this repository.
 
 ## Public contact
 

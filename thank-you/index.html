@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
   <script>
-    (function () {
-      var base = document.createElement('base');
-      base.href = location.hostname.endsWith('github.io') ? '/VoiceToLegacy.org/' : '/';
-      document.head.appendChild(base);
-    }());
+    document.write('<base href="' + (location.hostname.endsWith('github.io') ? '/VoiceToLegacy.org/' : '/') + '">');
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,10 +50,11 @@
   <main id="main">
     <section class="page-hero">
       <div class="narrow reveal">
-        <p class="section-kicker">Voice discovery received</p>
-        <h1 class="display">Your Voice to Legacy™ voice discovery has been <span class="gold-text">received.</span></h1>
-        <p class="lead">Thank you for trusting Divinityx Publishing Company with the first description of your story, knowledge, experience, or project idea.</p>
+        <p class="section-kicker" data-confirmation-kicker>Voice discovery received</p>
+        <h1 class="display" data-confirmation-heading>Your Voice to Legacy™ voice discovery has been <span class="gold-text">received.</span></h1>
+        <p class="lead" data-confirmation-copy>Thank you for trusting Divinityx Publishing Company with the first description of your story, knowledge, experience, or project idea.</p>
         <div class="notice confirmation-reference" data-confirmation-reference><strong>Reference:</strong> Your secure submission record has been created.</div>
+        <div class="notice"><strong>Your Voice Discovery is safely received.</strong> Please allow additional time for founder review and follow-up. Founder review and personal response times are temporarily limited and may take several weeks. Your submission will be securely preserved for review. Submitting a Voice Discovery does not create acceptance, a publishing agreement, or a production commitment.</div>
       </div>
     </section>
 
@@ -109,8 +106,19 @@
     (function () {
       var id = sessionStorage.getItem('vtl_submission_id');
       var duplicate = sessionStorage.getItem('vtl_submission_duplicate') === 'true';
+      var voiceId = sessionStorage.getItem('vtl_voice_discovery_reference_id');
+      var mode = sessionStorage.getItem('vtl_voice_discovery_mode');
+      var kicker = document.querySelector('[data-confirmation-kicker]');
+      var heading = document.querySelector('[data-confirmation-heading]');
+      var copy = document.querySelector('[data-confirmation-copy]');
       var box = document.querySelector('[data-confirmation-reference]');
-      if (box && id) box.innerHTML = '<strong>Reference ID:</strong> ' + id + (duplicate ? ' — Your earlier submission was recognized and preserved.' : '');
+      if (mode === 'voice_recording' && voiceId) {
+        kicker.textContent = 'Voice recording received';
+        heading.innerHTML = 'Your Voice Discovery recording has been <span class="gold-text">received.</span>';
+        copy.textContent = 'Your accepted voice answers are securely stored for private project review. Thank you for trusting Divinityx Publishing Company with your story.';
+        box.innerHTML = '<strong>Reference ID:</strong> ' + voiceId;
+      }
+      if (box && id && !(mode === 'voice_recording' && voiceId)) box.innerHTML = '<strong>Reference ID:</strong> ' + id + (duplicate ? ' — Your earlier submission was recognized and preserved.' : '');
 
       var eventKey = id ? 'vtl_conversion_fired_' + id : '';
       var alreadyFired = eventKey && sessionStorage.getItem(eventKey) === 'true';
